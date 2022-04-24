@@ -1,0 +1,127 @@
+body {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 1.5;
+  font-size: 16px;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+
+a {
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  color: white;
+}
+
+header {
+  margin: 0;
+  background-color: wheat;
+  padding: 20px 50px;
+}
+
+main {
+  padding: 20px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  text-decoration: underline green;
+}
+
+span {
+  font-size: 1.1rem;
+  color: brown;
+  font-weight: 700;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  border-radius: 5px;
+  background-color: brown;
+  color: wheat;
+  padding: 6px 1rem;
+  margin: 8px;
+}
+
+form {
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 400px;
+  margin: 50px;
+  border-radius: 10px;
+  border: 5px solid wheat;
+}
+
+input,
+textarea {
+  padding: 5px 10px;
+  font-size: 1rem;
+  width: 90%;
+  margin: 5px;
+  border-radius: 3px;
+  border: none;
+  border: 1px solid rgb(42, 87, 42);
+}
+
+.error {
+  font-size: 0.9rem;
+  color: red;
+  font-weight: 700;
+}
+
+button[type='submit'] {
+  background-color: #57caf7;
+  border: none;
+  display: inline-block;
+  border: 1px solid;
+  margin: 2% 40%;
+  font-weight: 800;
+  padding: 6px 1.2rem;
+  border-radius: 4px;
+}
+
+.edit {
+  background-color: rgb(12, 145, 198);
+}
+
+.delete {
+  background-color: red;
+}
+
+.like {
+  background-color: rgb(10, 248, 10);
+}
+
+.dislike {
+  background-color: blue;
+}
+
+.article-view {
+  max-width: 80%;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  color: brown;
+  background-color: bisque;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
