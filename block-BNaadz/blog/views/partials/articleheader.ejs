@@ -1,0 +1,17 @@
+<header class="w-100 flex space-between px-[9%]  py-10 bg-blue-800">
+    <h2 class=" font-bold text-white text-4xl">Blog website</h2>
+      <div class="flex justify-between items-center">
+         <p class="text-white text-3xl font-extrabold"><%= user.name%></p>
+          <a href="/articles" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded focus:outline-none focus:shadow-outline mx-3 text-2xl">all articles</a>
+          <% if(user){%>
+            <a href="/articles/new" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded focus:outline-none focus:shadow-outline mx-3 text-2xl">new article</a>
+         <%}%>
+         <% if(user){%>
+            <a href="/users/logout" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded focus:outline-none focus:shadow-outline mx-3 text-2xl">logout</a>
+         <%}%>
+         <% if(!user){%>
+            <a href="/users/login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded focus:outline-none focus:shadow-outline mx-3 text-2xl">login</a>
+         <%}%>
+      
+      </div>
+</header>

@@ -1,0 +1,91 @@
+<!-- get  all the cdn links  -->
+<%- include('./partials/cdnlinks.ejs')%>
+<!-- get  the header of the articles page  -->
+<%-include('./partials/articleheader.ejs')%>
+<main>
+  <section class="singleArticle px-[9%]">
+    <article>
+      <h2 class="text-5xl font-extrabold my-4"><%= article.title%></h2>
+      <div class="additonal-infomation flex justify-between items-center py-10">
+        <p class="text-xl">
+          Author name : <span><%= article.author.name%></span>
+        </p>
+        <div class="like-dislike-container flex justify-between">
+          <p class="text-xl text-xl">
+            Total likes : <span><%= article.likes%></span>
+          </p>
+          <a href="/articles/<%=article.slug%>/like" class="mx-5"
+            ><i class="fas fa-thumbs-up text-xl"></i
+          ></a>
+          <a href="/articles/<%=article.slug%>/dislike" class="mx-5"
+            ><i class="fas fa-thumbs-down text-xl"></i>
+          </a>
+        </div>
+      </div>
+      <p class="text-2xl my-6"><%= article.description%></p>
+      <a
+        href="/articles/<%=article.slug%>/edit"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded focus:outline-none focus:shadow-outline mx-3 text-2xl"
+        >edit</a
+      >
+      <a
+        href="/articles/<%= article.slug%>/delete"
+        class="bg-red-500 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded focus:outline-none focus:shadow-outline mx-3 text-2xl"
+        >delete</a
+      >
+    </article>
+    <div class="comment-container my-8">
+      <form
+        action="/articles/<%=article._id%>/<%=article.slug%>/comment"
+        method="POST"
+        class="w-[40%]"
+      >
+        <input
+          type="text"
+          name="author"
+          id="author"
+          placeholder="enter the authorname here"
+          class="w-[100%] py-3 text-base my-5"
+        />
+        <textarea
+          name="content"
+          id="content"
+          cols="30"
+          rows="5"
+          class="w-[100%] py-3 text-base my-5"
+        >
+                enter  the comment here 
+         </textarea
+        >
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded focus:outline-none focus:shadow-outline mx-3 text-2xl"
+        >
+          submit
+        </button>
+      </form>
+    </div>
+
+    <!-- show all the comments related to that  article   -->
+    <div
+      class="comment-contaier my-10 border-solid border-t-4 border-indigo-600"
+    >
+      <h4 class="text-3xl font-extrabold">List of all the comments</h4>
+      <% article.comments.forEach(cv=>{ %>
+      <div class="comment-container">
+        <p class="text-lg font-extrabold my-5"><%= cv.content%></p>
+        <a
+          href="/articles/comment/<%= cv._id%>/edit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded focus:outline-none focus:shadow-outline mx-3"
+          >edit</a
+        >
+        <a
+          href="/articles/comment/<%= cv._id%>/delete"
+          class="bg-red-800 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded focus:outline-none focus:shadow-outline mx-3"
+          >delete</a
+        >
+      </div>
+      <% })%>
+    </div>
+  </section>
+</main>

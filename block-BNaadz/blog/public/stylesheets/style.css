@@ -23,7 +23,6 @@ header {
 main {
   padding: 20px 60px;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
@@ -48,9 +47,16 @@ span {
 button {
   border-radius: 5px;
   background-color: brown;
-  color: wheat;
+  color: white;
+  font-weight: 800;
   padding: 6px 1rem;
   margin: 8px;
+}
+
+.sm-btn {
+  padding: 3px 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
 }
 
 form {
@@ -84,7 +90,7 @@ button[type='submit'] {
   border: none;
   display: inline-block;
   border: 1px solid;
-  margin: 2% 40%;
+  margin: 2% 38%;
   font-weight: 800;
   padding: 6px 1.2rem;
   border-radius: 4px;

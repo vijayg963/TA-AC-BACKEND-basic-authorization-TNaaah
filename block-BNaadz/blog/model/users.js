@@ -8,8 +8,7 @@ var userSchema = new Schema(
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, minlength: 5, required: true },
-    age: { type: Number, default: 0 },
-    phone: { type: Number, minlength: 10 },
+    phone: { type: String, minlength: 10 },
   },
   {
     timestamps: true,
