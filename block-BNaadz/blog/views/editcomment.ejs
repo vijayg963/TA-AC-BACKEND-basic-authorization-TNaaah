@@ -1,0 +1,25 @@
+<%- include('./partials/cdnlinks.ejs')%>
+<%- include('./partials/articleheader.ejs')%>
+<section class="h-screen w-100 flex items-center justify-center">
+    <div class="comment-container">
+        <form
+          action="/articles/<%=comment._id%>/"
+          method="POST"
+          class="w-[40%]"
+        >
+          <input
+            type="text"
+            name="author"
+            id="author"
+            placeholder="enter the authorname here"
+          class="w-[100%] py-3 text-base my-5 "
+          value="<%= comment.author %>"
+          />
+          <textarea name="content" id="content" cols="30" rows="5" class="w-[100%] py-3 text-base my-5">
+            <%= comment.content%>
+           </textarea
+          >
+          <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-5 rounded focus:outline-none focus:shadow-outline mx-3 text-2xl">submit</button>
+        </form>
+      </div>
+</section>

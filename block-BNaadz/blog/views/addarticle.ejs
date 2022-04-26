@@ -1,0 +1,24 @@
+<%-include('./partials/cdnlinks.ejs')%>
+   <%-include('./partials/articleheader.ejs')%>
+    <main>
+      <section class="article-form-container">
+        <div class="form-container">
+          <form action="/articles" method="POST">
+            <input
+              type="text"
+              name="title"
+              placeholder="Enter event  title here "
+            />
+            <textarea
+              name="description"
+              cols="30"
+              rows="5"
+              placeholder="description here .."
+            ></textarea>
+            <div class="center">
+              <input type="submit" value="submit" class="btn" id="submit-btn" />
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>

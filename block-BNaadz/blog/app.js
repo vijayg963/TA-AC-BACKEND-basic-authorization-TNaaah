@@ -3,31 +3,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mongoose = require('mongoose');
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
-var flash = require('connect-flash');
-
+const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const flash = require('connect-flash');
 require('dotenv').config();
-
-// connect to server
-mongoose.connect(
-  'mongodb://localhost/sample',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  (err) => {
-    console.log(err ? err : 'connected  true');
-  }
-);
+// Establish a connection between the server and our application
+mongoose.connect('mongodb://localhost/blog', (err) => {
+  console.log(err ? err : 'Connected true');
+});
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var articleRouter = require('./routes/articles');
+const articleRouter = require('./routes/article');
+const userInformation = require('./middlewares/auth');
 
 var app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -38,7 +29,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// add session
 app.use(
   session({
     secret: process.env.SECRET,
@@ -47,13 +37,11 @@ app.use(
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
-
+app.use(userInformation.userinfo);
 app.use(flash());
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/article', articleRouter);
-
+app.use('/articles', articleRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
