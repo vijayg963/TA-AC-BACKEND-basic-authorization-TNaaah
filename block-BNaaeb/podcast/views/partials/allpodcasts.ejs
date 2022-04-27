@@ -1,0 +1,37 @@
+<div class="flex justify-between  w-100 flex-wrap">
+    <%podcasts.forEach(cv=>{%>
+      <div
+        class="rounded   overflow-hidden shadow-lg my-5"
+      >
+        <img
+          class="h-12 w-100 object-cover" 
+          src="/uploads/<%= cv.image%>"
+        />
+        <div class="px-6 py-2">
+          <div>
+            <p class="font-bold text-xl mb-2"><%= cv.name%></p>
+            <p class="text-gray-700 text-base">Artist : <%= cv.artist%></p>
+            <p class="text-gray-700 text-base">Added by the user :<%= cv.userId.name%></p>
+            <p class="text-gray-700 text-base">duration : <%= cv.description%></p>
+            <p class="text-gray-700 text-base">Podcast plan : <%= cv.podcastplan%></p>
+          </div>
+        </div>
+        <div class="px-6 pt-4 pb-2 flex justify-between">
+          <% if(user.isadmin) {%>
+          <button
+            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+          >
+            <a href="/podcasts/<%= cv._id%>/edit">edit</a>
+          </button>
+          <button
+            class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+          >
+            <a href="/podcasts/<%= cv._id%>/delete">delete</a>
+          </button>
+          <%}%>
+          <!-- if the registered user is not a but not admin then he can add podcasts to the card  -->
+        </div>
+      </div>
+      <%})%>
+  
+  </div>

@@ -1,0 +1,58 @@
+<header class="flex justify-between py-5 px-32 bg-blue-600">
+  <div class="logo">
+    <i class="fas fa-podcast text-2xl text-white"></i>
+    <a href="/" class="font-medium font-extabold text-white text-2xl"
+      >Podcast</a
+    >
+  </div>
+  <nav>
+    <% if(user && !user.isadmin){%>
+    <a
+      href="/podcasts/"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >all podcasts</a
+    >
+    <a
+      href="/podcasts/new"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >add podcast</a
+    >
+    <%}%>
+     <%if(user.isadmin){%>
+    <a
+      href="/podcasts/dashboard?alluser=users"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >alluser</a
+    >
+    <%}%>
+    <!-- //get a  registered user button is the user is not registered  -->
+    <% if(!user){%>
+    <a
+      href="/users/register/new"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >sign up
+    </a>
+    <a
+      href="/users/login"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >login
+    </a>
+    <%}%> 
+    <% if(user && user.isadmin){%>
+    <a
+      href="/podcasts/dashboard"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+    >
+      all podcast</a
+    >
+    <%}%>
+    <%if(user || user.isadmin){%>
+      <a
+      href="/users/logout"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >logout</a
+    >
+      <%}%>
+  </nav>
+  
+</header>
