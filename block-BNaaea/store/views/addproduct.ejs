@@ -1,0 +1,53 @@
+<%- include('./partials/cdnlink.ejs') %>
+<main>
+  <section
+    class="article-form-container flex justify-center items-center h-screen"
+  >
+    <div class="form-container">
+      <form action="/products" method="POST" enctype="multipart/form-data">
+        <label for="name" class="font-extrabold">Product name</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter event  name here "
+          id="name"
+          class="appearance-none mb-4 rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+        />
+        <label for="quantity" class="font-extrabold">Product qunatity</label>
+        <input
+          type="number"
+          name="quantity"
+          placeholder="Enter event  qunatity here "
+          id="quantity"
+          class="appearance-none mb-4 rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+        />
+        <label for="price" class="font-extrabold">Product price</label>
+        <input
+          type="number"
+          name="price"
+          placeholder="price of  the product"
+          id="price"
+          class="appearance-none mb-4 rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+        />
+        <label for="category" class="font-extrabold">Product category</label>
+        <input
+        type="text"
+        name="category"
+        placeholder="enter the category of the product"
+        id="category"
+        class="appearance-none mb-4 rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+      />
+        <label for="image" class="font-extrabold">Product image</label>
+        <input type="file" name="image" id="image" class="my-5" />
+        <button
+          type="submit"
+          value="submit"
+          id="submit-btn"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        >
+          submit
+        </button>
+      </form>
+    </div>
+  </section>
+</main>
