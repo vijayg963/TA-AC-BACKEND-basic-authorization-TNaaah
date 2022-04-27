@@ -1,25 +1,25 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var mongoose = require('mongoose');
-var session = require('express-session');
-var MongoStore = require('connect-mongo')(session);
-var flash = require('connect-flash');
-
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const flash = require('connect-flash');
 require('dotenv').config();
 
-// connect to server
-mongoose.connect('mongodb://localhost/store', (err) => {
-  console.log(err ? err : 'connected  true');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const productsRouter = require('./routes/products');
+const auth = require('./middlewares/auth');
+// const  productRouter = require('./routes/product');
+const app = express();
+const mongoose = require('mongoose');
+
+//establishing a connection between the server and  the application
+mongoose.connect('mongodb://127.0.0.1:27017/ecommercewebsite', (err) => {
+  console.log(err ? err : 'Connection is made successfully');
 });
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var productRouter = require('./routes/produts');
-
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,7 +31,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// add session
 app.use(
   session({
     secret: process.env.SECRET,
@@ -40,12 +39,13 @@ app.use(
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
-
 app.use(flash());
+
+app.use(auth.userInformation);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/produts', productRouter);
+app.use('/products', productsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,0 +1,28 @@
+<%- include('./partials/cdnlink.ejs')%> <%-
+include('./partials/adminheader.ejs')%>
+<main class="flex justify-between">
+  <section class="products-wrapper px-[9%] basis-2/3">
+    <div class="product-container flex justify-between flex-wrap">
+        <%if(products) {%>
+          <%- include('./partials/allproducts.ejs')%>
+        <%}%>
+        <%if(categoriesproducts) {%>
+          <%- include('./partials/categoriesproducts.ejs')%>
+        <%}%>
+        <!-- if the user clicks on  the all user button then show all users  -->
+        <%if(users){%>
+           <%- include('./partials/users.ejs')%>
+        <%}%>   
+    </div>
+  </section>
+  <aside class="basis-1/4 h-screen bg-red
+  -900 p-[20px]">
+      <h1 class="font-medium text-2xl">List of all the categories</h1>
+      <ul>
+        <% categories.forEach(cv=>{ %>
+            <li><a href="/products?category=<%= cv%>"><%= cv%></a></li>
+        <% })%>
+      </ul>
+
+  </aside>
+</main>

@@ -1,0 +1,53 @@
+<header class="flex justify-between py-5 px-[9%] bg-blue-600">
+  <%if(user.isadmin){%>
+    <a href="/products" class="logo text-xl font-extrabold text-white"
+    >Admin Dashboard</a
+  >
+  <%}%> 
+  <%if(!user.isadmin){%>
+    <a href="/products" class="logo text-xl font-extrabold text-white"
+    >Ecommerce Website</a
+  >
+  
+  <%}%> 
+  <div class="menus-container">
+    <!-- if the user is a registered user then only he will  be able to see the logout button  -->
+    <% if(user){%>
+      <a
+      href="/products"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >all-products</a
+    >
+    <a
+      href="/users/logout"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >logout</a
+    >
+    <%}%>
+
+    <!-- //get a  registered user button is the user is not registered  -->
+    <% if(!user){%>
+    <a
+      href="/users/register/new"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >sign up
+    </a>
+    <a
+      href="/users/login"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >login
+    </a>
+    <%}%> <% if(user && user.isadmin) {%>
+      <a
+      href="/products?alluser=users"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      > all users</a
+    >
+    <a
+      href="/products/new"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >add product</a
+    >
+    <%}%>
+  </div>
+</header>
