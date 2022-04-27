@@ -1,0 +1,21 @@
+<div class="allusercontainer w-100 py-5">
+  <h2 class="font-extrabold text-2xl basis-1">
+    All the users which are not verified yet:
+  </h2>
+  <%users.forEach(cv=>{ %> <% if(!cv.isverified){%>
+  <div class="eachuser my-4 flex justify-between py-4 border-[#dddddd]-500 border-b-2">
+    <h2 class="font-bold text-xl">
+      Username : <span class="text-base font-normal"><%= cv.name%></span>
+    </h2>
+    <div class="action-btn">
+      <button
+        class="inline-block text-white  rounded-full px-3 py-1 text-sm font-semibold bg-green-500 mr-2 mb-2"
+      >
+        <a href="/podcasts/dashboard/<%= cv._id%>/verifyuser">
+          verify user
+        </a>
+      </button>
+    </div>
+  </div>
+  <%}%> <%})%>
+</div>
